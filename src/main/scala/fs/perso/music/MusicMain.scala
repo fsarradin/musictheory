@@ -33,7 +33,13 @@ object MusicMain {
 //    println(PitchedNote(A, 2) + 2)
 
     println((0 to 22).map(_.toString.padTo(4, ' ')).mkString(""))
-    println(standardTunedGuitar.take(22).transpose.map(_.map(n => s"${n.note}${n.pitch}".padTo(3, ' ')).mkString("|")).mkString("\n"))
+    println(
+      standardTunedGuitar
+        .take(22)
+        .transpose
+        .map(_.map(n => s"${n.note}${n.pitch}".padTo(3, ' ')).mkString("|"))
+        .mkString("\n")
+    )
   }
 
   def printChord(note: Note, root: Note): Unit = {

@@ -5,9 +5,9 @@ import Note._
 object Guitar {
 
   case class GuitarChord(tuning: PitchedNote) {
-    def fret(n: Int): PitchedNote = selectPitchedNote(tuning + n)
+    def fret(n: Int): PitchedNote       = selectPitchedNote(tuning + n)
     def take(n: Int): List[PitchedNote] = (0 to n).map(fret).toList
-    def drop(n: Int): GuitarChord = GuitarChord(selectPitchedNote(tuning + n))
+    def drop(n: Int): GuitarChord       = GuitarChord(selectPitchedNote(tuning + n))
     def find(note: Note): (PitchedNote, Int) = {
       val interval = note - tuning.note
       (selectPitchedNote(tuning + interval), interval.semitone)
@@ -17,7 +17,7 @@ object Guitar {
   case class Location(chord: Int, fret: Int)
 
   case class Guitar(chords: List[GuitarChord]) {
-    def fret(n: Int): List[PitchedNote] = chords.map(_.fret(n))
+    def fret(n: Int): List[PitchedNote]       = chords.map(_.fret(n))
     def take(n: Int): List[List[PitchedNote]] = (0 to n).map(fret).toList
 
 //    def find(note: Note, chord: Int): Location = {

@@ -1,6 +1,6 @@
 package fs.perso.music
 
-import org.scalacheck.{Gen, Prop}
+import org.scalacheck.{ Gen, Prop }
 import org.scalatest.FunSuiteLike
 import org.scalatestplus.scalacheck.Checkers
 
@@ -10,16 +10,20 @@ class NoteTest extends FunSuiteLike with Checkers {
   val noteGen: Gen[Note] = Gen.oneOf(notes)
   val pitchedNoteGen: Gen[PitchedNote] =
     for {
-      note <- noteGen
+      note  <- noteGen
       pitch <- Gen.oneOf(Gen.negNum[Int], Gen.posNum[Int])
     } yield PitchedNote(note, pitch)
 
   test("note plus 0 semitone gives the same note") {
-    check(Prop.forAll(noteGen) { n => (n + 0).contains(n) })
+    check(Prop.forAll(noteGen) { n =>
+      (n + 0).contains(n)
+    })
   }
 
   test("note plus 12 semitones gives the same note") {
-    check(Prop.forAll(noteGen) { n => (n + 12).contains(n) })
+    check(Prop.forAll(noteGen) { n =>
+      (n + 12).contains(n)
+    })
   }
 
   test("getting the interval between two notes and adding it to the second note give the first note") {
@@ -27,7 +31,9 @@ class NoteTest extends FunSuiteLike with Checkers {
   }
 
   test("pitched note plu 0 semitone gives the same note") {
-    check(Prop.forAll(pitchedNoteGen) { n => (n + 0).contains(n) })
+    check(Prop.forAll(pitchedNoteGen) { n =>
+      (n + 0).contains(n)
+    })
   }
 
 }

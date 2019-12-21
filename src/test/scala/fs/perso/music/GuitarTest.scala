@@ -1,6 +1,6 @@
 package fs.perso.music
 
-import org.scalatest.{FunSuiteLike, Matchers}
+import org.scalatest.{ FunSuiteLike, Matchers }
 
 class GuitarTest extends FunSuiteLike with Matchers {
 
@@ -10,7 +10,7 @@ class GuitarTest extends FunSuiteLike with Matchers {
   test("3rd fret on E2 chord is a G2") {
     val chord = GuitarChord(PitchedNote(E, 2))
 
-    chord.fret(3) should be (PitchedNote(G, 2))
+    chord.fret(3) should be(PitchedNote(G, 2))
   }
 
 }
