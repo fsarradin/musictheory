@@ -1,10 +1,11 @@
 package fs.perso.music
 
-import org.scalacheck.{ Gen, Prop }
+import org.scalacheck.{Gen, Prop}
 import org.scalatest.FunSuiteLike
 import org.scalatestplus.scalacheck.Checkers
 
 class NoteTest extends FunSuiteLike with Checkers {
+  import fs.perso.music.domain._
   import Note._
 
   val noteGen: Gen[Note] = Gen.oneOf(notes)

@@ -1,6 +1,7 @@
 package fs.perso.music
 
-import Note._
+import fs.perso.music.domain.Note._
+import fs.perso.music.domain._
 
 object Guitar {
 
