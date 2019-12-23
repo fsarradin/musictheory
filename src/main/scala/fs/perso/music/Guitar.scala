@@ -6,12 +6,12 @@ import fs.perso.music.domain._
 object Guitar {
 
   case class GuitarChord(tuning: PitchedNote) {
-    def fret(n: Int): PitchedNote       = selectPitchedNote(tuning + n)
+    def fret(n: Int): PitchedNote       = selectPitchedNote(tuning + (n * 100))
     def take(n: Int): List[PitchedNote] = (0 to n).map(fret).toList
-    def drop(n: Int): GuitarChord       = GuitarChord(selectPitchedNote(tuning + n))
+    def drop(n: Int): GuitarChord       = GuitarChord(selectPitchedNote(tuning + (n * 100)))
     def find(note: Note): (PitchedNote, Int) = {
       val interval = note - tuning.note
-      (selectPitchedNote(tuning + interval), interval.semitone)
+      (selectPitchedNote(tuning + interval), interval.cents)
     }
   }
 

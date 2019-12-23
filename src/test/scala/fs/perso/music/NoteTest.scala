@@ -15,15 +15,15 @@ class NoteTest extends FunSuiteLike with Checkers {
       pitch <- Gen.oneOf(Gen.negNum[Int], Gen.posNum[Int])
     } yield PitchedNote(note, pitch)
 
-  test("note plus 0 semitone gives the same note") {
+  test("note plus 0 cent gives the same note") {
     check(Prop.forAll(noteGen) { n =>
       (n + 0).contains(n)
     })
   }
 
-  test("note plus 12 semitones gives the same note") {
+  test("note plus 1200 cents gives the same note") {
     check(Prop.forAll(noteGen) { n =>
-      (n + 12).contains(n)
+      (n + 1200).contains(n)
     })
   }
 
@@ -31,7 +31,7 @@ class NoteTest extends FunSuiteLike with Checkers {
     check(Prop.forAll(noteGen, noteGen) { case (n1, n2) => (n2 + (n1 - n2)).contains(n1) })
   }
 
-  test("pitched note plu 0 semitone gives the same note") {
+  test("pitched note plu 0 cent gives the same note") {
     check(Prop.forAll(pitchedNoteGen) { n =>
       (n + 0).contains(n)
     })

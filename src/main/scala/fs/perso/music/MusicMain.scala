@@ -4,30 +4,33 @@ object MusicMain {
 
   import fs.perso.music.domain._
   import Note._
+  import Interval._
   import Chord._
   import Guitar._
 
   def main(args: Array[String]): Unit = {
     println(chordMaj7(C, C))
+    println(chordm7(C, C))
 
-//    harmonizedMajorScale()
-//    harmonizedMinorScale()
+    harmonizedMajorScale()
+    println()
+    harmonizedMinorScale()
 
-//    flyMeToTheMoon()
+    flyMeToTheMoon()
 
-    //    println(PitchedNote(E, 2) + MinorSixth)
-//    println(PitchedNote(B, 2) + 1)
-//    println(PitchedNote(A, 2) + 3)
-//    println(PitchedNote(A, 2) + 2)
+    println(PitchedNote(E, 2) + MinorSixth)
+    println(PitchedNote(B, 2) + 100)
+    println(PitchedNote(A, 2) + 300)
+    println(PitchedNote(A, 2) + 200)
 
-//    println((0 to 22).map(_.toString.padTo(4, ' ')).mkString(""))
-//    println(
-//      standardTunedGuitar
-//        .take(22)
-//        .transpose
-//        .map(_.map(n => s"${n.note}${n.pitch}".padTo(3, ' ')).mkString("|"))
-//        .mkString("\n")
-//    )
+    println((0 to 22).map(_.toString.padTo(4, ' ')).mkString(""))
+    println(
+      standardTunedGuitar
+        .take(22)
+        .transpose
+        .map(_.map(n => s"${n.note}${n.pitch}".padTo(3, ' ')).mkString("|"))
+        .mkString("\n")
+    )
   }
 
   def flyMeToTheMoon(): Unit = {
@@ -62,10 +65,6 @@ object MusicMain {
             yield chordm7(note, root).mkString
         root.toString :: c
       }
-
-    println(chordm7(D, C))
-    println(chordm7(Eb, C))
-    println(chordm7(F, C))
 
     println(List("root", "I", "II", "III", "IV", "V", "VI", "VII").map(_.padTo(6, ' ')).mkString("\t"))
     chords.foreach(l => println(l.map(_.padTo(6, ' ')).mkString("\t")))
