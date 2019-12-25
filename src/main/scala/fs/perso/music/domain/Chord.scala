@@ -4,10 +4,22 @@ import fs.perso.music.domain.Interval._
 import fs.perso.music.domain.Note._
 
 case class Chord(notes: List[Note]) {
-  def root: Note                                  = notes.head
-  val intervals: List[Interval]                   = notes.map(_ - root)
+  def root: Note = notes.head
+  val intervals: List[Interval] =
+    notes.foldLeft(List[Interval]()) {
+      case (Nil, n) => List(n - root)
+      case (is, n) =>
+        val interval = n - root
+        if (interval.cents > is.last.cents)
+          is :+ interval
+        else
+          is :+ extendedIntervals((interval.cents + 1200) / 100)
+    }
   def hasInterval(interval: Interval): Boolean    = intervals.contains(interval)
   def hasIntervals(intervals: Interval*): Boolean = this.intervals.diff(intervals).isEmpty
+
+  override def toString: String =
+    s"${getClass.getSimpleName}(${notes.mkString(", ")})"
 
   def mkString: String =
     if (hasIntervals(Unison, MinorThird, FlatFifth, MajorSixth))
@@ -15,10 +27,14 @@ case class Chord(notes: List[Note]) {
     else {
       var st = root.toString
       if (hasInterval(MinorThird)) st += "m"
-      if (hasInterval(MajorSeventh)) st += "M7"
-      if (hasInterval(MinorSeventh)) st += "7"
-      if (hasInterval(FlatFifth)) st += "b5"
-      if (hasInterval(MinorSixth)) st += "#5"
+      if (hasInterval(MajorSixth) && hasInterval(MajorNinth) && !hasInterval(MajorSeventh)) st += "6/9"
+      else {
+        if (hasInterval(MajorSixth)) st += "6"
+        if (hasInterval(MajorSeventh)) st += "M7"
+        if (hasInterval(MinorSeventh)) st += "7"
+        if (hasInterval(FlatFifth)) st += "b5"
+        if (hasInterval(MinorSixth)) st += "#5"
+      }
 
       st
     }

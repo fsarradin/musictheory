@@ -9,28 +9,30 @@ object MusicMain {
   import Guitar._
 
   def main(args: Array[String]): Unit = {
-    println(chordMaj7(C, C))
-    println(chordm7(C, C))
+//    println(chordMaj7(C, C))
+//    println(chordm7(C, C))
 
-    harmonizedMajorScale()
-    println()
-    harmonizedMinorScale()
+    println(Chord(List(C, E, G, B, D)).intervals)
 
-    flyMeToTheMoon()
+//    harmonizedMajorScale()
+//    println()
+//    harmonizedMinorScale()
 
-    println(PitchedNote(E, 2) + MinorSixth)
-    println(PitchedNote(B, 2) + 100)
-    println(PitchedNote(A, 2) + 300)
-    println(PitchedNote(A, 2) + 200)
+//    flyMeToTheMoon()
 
-    println((0 to 22).map(_.toString.padTo(4, ' ')).mkString(""))
-    println(
-      standardTunedGuitar
-        .take(22)
-        .transpose
-        .map(_.map(n => s"${n.note}${n.pitch}".padTo(3, ' ')).mkString("|"))
-        .mkString("\n")
-    )
+//    println(PitchedNote(E, 2) + MinorSixth)
+//    println(PitchedNote(B, 2) + 100)
+//    println(PitchedNote(A, 2) + 300)
+//    println(PitchedNote(A, 2) + 200)
+//
+//    println((0 to 22).map(_.toString.padTo(4, ' ')).mkString(""))
+//    println(
+//      standardTunedGuitar
+//        .take(22)
+//        .transpose
+//        .map(_.map(n => s"${n.note}${n.pitch}".padTo(3, ' ')).mkString("|"))
+//        .mkString("\n")
+//    )
   }
 
   def flyMeToTheMoon(): Unit = {
