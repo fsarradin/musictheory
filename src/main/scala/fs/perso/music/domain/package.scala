@@ -24,6 +24,7 @@ package object domain {
 
   val majorScaleOf: Note         => List[Note] = scaleOf(majorScale)
   val minorHarmonicScaleOf: Note => List[Note] = scaleOf(minorHarmonicScale)
+  val chromaticScaleOf: Note     => List[Note] = scaleOf(chromaticScale)
 
   val CMajorScale: List[Note] = majorScaleOf(C)
 }
