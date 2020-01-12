@@ -9,14 +9,14 @@ object MusicMain {
   import Guitar._
 
   def main(args: Array[String]): Unit = {
-//    println(chordMaj7(C, C))
-//    println(chordm7(C, C))
+    println(chordMaj7(A, A))
+    println(chordm7(A, A))
 
     println(Chord(List(C, E, G, B, D)).intervals)
 
-//    harmonizedMajorScale()
-//    println()
-//    harmonizedMinorScale()
+    harmonizedMajorScale()
+    println()
+    harmonizedMinorScale()
 
 //    flyMeToTheMoon()
 
@@ -48,7 +48,7 @@ object MusicMain {
 
   def harmonizedMajorScale(): Unit = {
     val chords: List[List[String]] =
-      for (root <- majorScaleOf(C)) yield {
+      for (root <- chromaticScaleOf(C)) yield {
         val c =
           for (note <- majorScaleOf(root))
             yield chordMaj7(note, root).mkString
