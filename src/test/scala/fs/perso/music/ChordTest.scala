@@ -39,6 +39,10 @@ class ChordTest extends FunSuiteLike with Matchers {
     Chord(List(C, E, G)).mkString shouldEqual("C")
   }
 
+  test("should display C power chard as C5") {
+    Chord(List(C, G)).mkString shouldEqual("C5")
+  }
+
   test("should display C minor triad as Cm") {
     Chord(List(C, Eb, G)).mkString shouldEqual("Cm")
   }

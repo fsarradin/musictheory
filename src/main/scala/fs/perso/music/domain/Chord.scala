@@ -24,6 +24,8 @@ case class Chord(notes: List[Note]) {
   def mkString: String =
     if (hasIntervals(Unison, MinorThird, FlatFifth, MajorSixth))
       root.toString + "dim7"
+    else if (intervals == List(Unison, PerfectFifth))
+      root.toString + "5"
     else {
       var st = root.toString
       if (hasInterval(MinorThird)) st += "m"
